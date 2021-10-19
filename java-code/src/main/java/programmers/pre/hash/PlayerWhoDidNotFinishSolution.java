@@ -21,8 +21,24 @@ public class PlayerWhoDidNotFinishSolution {
             int val = pMap.get(c);
             pMap.put(c, --val);
         }
+
+        // Solution 1
         for (Map.Entry<String, Integer> data : pMap.entrySet()) {
             if (data.getValue() != 0)   answer = data.getKey();
+        }
+
+        // Solution 2 (Best)
+        for (Map.Entry<String, Integer> data : pMap.entrySet()) {
+            if (data.getValue() == 0)   continue;
+            answer = data.getKey();
+            break;
+        }
+
+        // Solution 3
+        for (String k : pMap.keySet()) {
+            if (pMap.get(k) == 0)   continue;
+            answer = k;
+            break;
         }
 
         return answer;
