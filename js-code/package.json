@@ -1,0 +1,23 @@
+{
+  "name": "js-code",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "prebuild": "rimraf dist/",
+    "compile": "tsc --build",
+    "build": "npm run prebuild && npm run compile",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^16.11.1",
+    "ts-node": "^10.3.0",
+    "typescript": "^4.4.4"
+  },
+  "devDependencies": {
+    "rimraf": "^3.0.1"
+  }
+}
