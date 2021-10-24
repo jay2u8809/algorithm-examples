@@ -4,23 +4,18 @@ function solution(participant: any[], completion: any[]) {
   if (participant.length - 1 !== completion.length) throw new Error('completion + 1 = participant');
 
   const pMap = new Map<string, number>();
-  participant.forEach(p => {
-    let value: number|undefined = pMap.get(p);
-    pMap.set(p, value === undefined || value === null ? 1 : ++value);
-  });
-
-  completion.forEach(c => {
-    let value: number|undefined = pMap.get(c);
-    pMap.set(c, value === undefined || value === null ? 0 : --value);
-  });
-
-  let answer = '';
-  for (const [k, v] of pMap) {
-    if (v === 0)  continue;
-    answer = k;
-    break;
+  for (let i = 0, len = participant.length; i < len; i++) {
+    const p: string = participant[i],
+        c: string = completion[i];
+    pMap.set(p, (pMap.get(p) || 0) + 1);
+    pMap.set(c, (pMap.get(c) || 0) - 1);
   }
-  return answer;
+
+  for (const [k, v] of pMap) {
+    if (v > 0)  return k;
+  }
+
+  return null;
 }
 
 // "leo"
